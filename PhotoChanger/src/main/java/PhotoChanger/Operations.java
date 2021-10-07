@@ -4,23 +4,22 @@ package PhotoChanger;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.io.IOException;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+
 
 
 public class Operations {
     
-       // funkcja zmieniajÄ…ca grafikÄ™ na czarno-biaĹ‚Ä…
-  public void greyScale(BufferedImage img, int startX, int startY, int imgWidth, int imgHeight) throws IOException{
-  // BufferedImage tmp = img;
+       // funkcja zmieniajaca obraz w czarno-bialy
+  public void greyScale(BufferedImage img, int startX, int startY, int endX, int endY) throws IOException{
+
     int pixels[] = new int[3];
     double ww[]=new double[3];
     WritableRaster raster = img.getRaster();
-    
-      for(int i=startX;i<imgWidth;i++) {
-   
-        for(int j=startY;j<imgHeight;j++){
+     
+         
+      for(int i=startX;i<endX;i++) {
+        for(int j=startY;j<endY;j++){
+       
  
             raster.getPixel(i, j, pixels);
            
@@ -33,24 +32,21 @@ public class Operations {
         }
    
    }
- // JFrame frame = new JFrame();
- //       frame.getContentPane().add(new JLabel(new ImageIcon(img)));
- //         frame.pack();
- //          frame.setVisible(true); 
+
  
   }
   
   
-  // funcja zmieniajÄ…ca obraz w sepie
-  public void sepia(BufferedImage img, int startX, int startY, int imgWidth, int imgHeight) throws IOException{
-  // BufferedImage tmp = img;
+  // funcja zmieniajaca obraz w sepie
+  public void sepia(BufferedImage img, int startX, int startY, int endX, int endY) throws IOException{
+
     int pixels[] = new int[3];
     double ww[]=new double[3];
     WritableRaster raster = img.getRaster();
     
-     for(int i=startX;i<imgWidth;i++) {
+   for(int i=startX;i<endX;i++) {
    
-        for(int j=startY;j<imgHeight;j++){
+        for(int j=startY;j<endY;j++){
  
             raster.getPixel(i, j, pixels);
            
@@ -63,23 +59,19 @@ public class Operations {
         }
    
    }
- // JFrame frame = new JFrame();
- //       frame.getContentPane().add(new JLabel(new ImageIcon(img)));
- //         frame.pack();
- //          frame.setVisible(true); 
- 
+
 
   }
     
-  // funkcja przetwarzajÄ…ca obraz na negatyw
-   public void negative(BufferedImage img, int startX, int startY, int imgWidth, int imgHeight) throws IOException{
+  // funkcja zmieniajaca obraz w jego negatyw
+   public void negative(BufferedImage img, int startX, int startY, int endX, int endY) throws IOException{
     int pixels[] = new int[3];
     double ww[]=new double[3];
     WritableRaster raster = img.getRaster();
-    
-    for(int i=startX;i<imgWidth;i++) {
-   
-        for(int j=startY;j<imgHeight;j++){
+     
+ for(int i=startX;i<endX;i++) {
+    for(int j=startY;j<endY;j++){
+       
  
             raster.getPixel(i, j, pixels);
            
@@ -92,23 +84,20 @@ public class Operations {
         }
    
    }
-  //JFrame frame = new JFrame();
-  //      frame.getContentPane().add(new JLabel(new ImageIcon(img)));
-  //        frame.pack();
-  //         frame.setVisible(true); 
+
  
 
   }
    
-   // funkcja zmieniajÄ…ca obraz na zawierajÄ…cy tylko odcienie czerwonego
-   public void toRed(BufferedImage img, int startX, int startY, int imgWidth, int imgHeight) throws IOException{
+   // funkcja zmieniajaca obraz w odcienie czerwonego
+   public void toRed(BufferedImage img, int startX, int startY, int endX, int endY) throws IOException{
     int pixels[] = new int[3];
     double ww[]=new double[3];
     WritableRaster raster = img.getRaster();
-    
-     for(int i=startX;i<imgWidth;i++) {
-   
-        for(int j=startY;j<imgHeight;j++){
+     
+     for(int i=startX;i<endX;i++) {
+         for(int j=startY;j<endY;j++){
+       
  
             raster.getPixel(i, j, pixels);
            
@@ -121,23 +110,20 @@ public class Operations {
         }
    
    }
- // JFrame frame = new JFrame();
-    //    frame.getContentPane().add(new JLabel(new ImageIcon(img)));
-    //      frame.pack();
-    //       frame.setVisible(true); 
+
  
 
   }
     
-   // funkcja zmieniajÄ…ca obraz na zawierajÄ…cy tylko odcienie zielonego
-   public void toGreen(BufferedImage img, int startX, int startY, int imgWidth, int imgHeight) throws IOException{
+   // funkcja  zmieniajaca obraz w odcienie zielonego
+   public void toGreen(BufferedImage img, int startX, int startY, int endX, int endY) throws IOException{
     int pixels[] = new int[3];
     double ww[]=new double[3];
     WritableRaster raster = img.getRaster();
     
-    for(int i=startX;i<imgWidth;i++) {
+  for(int i=startX;i<endX;i++) {
    
-        for(int j=startY;j<imgHeight;j++){
+        for(int j=startY;j<endY;j++){
  
             raster.getPixel(i, j, pixels);
            
@@ -150,22 +136,19 @@ public class Operations {
         }
    
    }
- // JFrame frame = new JFrame();
-//        frame.getContentPane().add(new JLabel(new ImageIcon(img)));
-//          frame.pack();
-//           frame.setVisible(true); 
+
  
 
   }
-     // funkcja zmieniajÄ…ca obraz na zawierajÄ…cy tylko odcienie niebieskiego
-   public void toBlue(BufferedImage img, int startX, int startY, int imgWidth, int imgHeight) throws IOException{
+     // funkcja zmieniajaca obraz w odcienie niebieskiego
+   public void toBlue(BufferedImage img, int startX, int startY, int endX, int endY) throws IOException{
     int pixels[] = new int[3];
     double ww[]=new double[3];
     WritableRaster raster = img.getRaster();
     
-    for(int i=startX;i<imgWidth;i++) {
+    for(int i=startX;i<endX;i++) {
    
-        for(int j=startY;j<imgHeight;j++){
+        for(int j=startY;j<endY;j++){
  
             raster.getPixel(i, j, pixels);
            
@@ -178,27 +161,22 @@ public class Operations {
         }
    
    }
- // JFrame frame = new JFrame();
- //       frame.getContentPane().add(new JLabel(new ImageIcon(img)));
- //         frame.pack();
-  //         frame.setVisible(true); 
+
  
 
   }
       
    
-   /* 
-   funkcja contrast do poprawy - jasne barwy sÄ… jaĹ›niejsze, ciemne ciemniejsze, problemem sÄ… bawry, ktĂłre na poczÄ…tku byĹ‚y bardzo ciemne lub bardzo jasne
-   */
-   public void contrast(BufferedImage img, int startX, int startY, int imgWidth, int imgHeight) throws IOException{
+  // funkcja zwiekszajaca kontrast obrazu
+   public void contrast(BufferedImage img, int startX, int startY, int endX, int endY) throws IOException{
     int pixels[] = new int[3];
     double ww[]=new double[3];
     WritableRaster raster = img.getRaster();
     double c = 1.1;
     
-      for(int i=startX;i<imgWidth;i++) {
+      for(int i=startX;i<endX;i++) {
    
-        for(int j=startY;j<imgHeight;j++){
+        for(int j=startY;j<endY;j++){
  
             raster.getPixel(i, j, pixels);
            
@@ -222,11 +200,6 @@ public class Operations {
         }
    
    }
- // JFrame frame = new JFrame();
-  //      frame.getContentPane().add(new JLabel(new ImageIcon(img)));
-  //        frame.pack();
-   //        frame.setVisible(true); 
- 
 
   }
 }
