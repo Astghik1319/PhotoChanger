@@ -25,18 +25,32 @@ public class Main {
             int imgWidth = img.getWidth();
             int imgHeight = img.getHeight();
             
-            
-            int opti = optionChooser();
-          
-        
+            int slicePart = Sliceimg();
+            if(slicePart == 2){  //nie dziel
+                 int opti = optionChooser();
+                  Random random = new Random();
+           if(opti==9){ //nie dziel losowo
+               int x = random.nextInt(7);
+               changerImg(img, 0, 0, imgWidth, imgHeight, x);   
+                JFrame frame = new JFrame();
+       frame.getContentPane().add(new JLabel(new ImageIcon(img)));
+          frame.pack();
+           frame.setVisible(true); 
+           } else { //nie dziel wybrana opcja
+               changerImg(img, 0, 0, imgWidth, imgHeight, opti);   
+                JFrame frame = new JFrame();
+       frame.getContentPane().add(new JLabel(new ImageIcon(img)));
+          frame.pack();
+           frame.setVisible(true); 
+           }
+            } else { //podziel
             Random random = new Random();
-           if(opti==9){
-                 int partH = imgSliceHorizontal();
-                 int partW = imgSliceWertical();
-                 
-                for(int i=0; i<partW; i++){
-                    for(int j=0; j<partH; j++){
-
+            int partH = imgSliceHorizontal();
+            int partW = imgSliceWertical();
+             int opti = optionChooser();
+             if(opti==2){ //podziel losowo
+               for(int j=0; j<partH; j++) {
+                   for (int i=0; i<partW; i++){
                         int a = (imgWidth/partH)*j;
                         int b = (imgHeight/partW)*i;
                         int c = (imgWidth/partH)*(j+1);
@@ -44,27 +58,46 @@ public class Main {
                         int x = random.nextInt(7);
                         
                         changerImg(img, a, b, c, d, x);
-
-                    }
-              } 
-               
-                
-                 JFrame frame = new JFrame();
-       frame.getContentPane().add(new JLabel(new ImageIcon(img)));
-          frame.pack();
-           frame.setVisible(true); 
-            } else {
-                changerImg(img, 0, 0, imgWidth, imgHeight, opti);
-                
-                
+                   }
+               } 
                 JFrame frame = new JFrame();
        frame.getContentPane().add(new JLabel(new ImageIcon(img)));
           frame.pack();
-           frame.setVisible(true); 
+           frame.setVisible(true);
+             } else { //podziel wybrane funckje
+                for(int j=0; j<partH; j++) {
+                   for (int i=0; i<partW; i++){
+                        int a = (imgWidth/partH)*j;
+                        int b = (imgHeight/partW)*i;
+                        int c = (imgWidth/partH)*(j+1);
+                        int d = (imgHeight/partW)*(i+1);
+                        int l=i+1;
+                        int m=j+1;
+                        System.out.println("Podaj opcję dla części: " + l +", " + m);
+                        int x = changerFunction(opti);
+                        
+                        changerImg(img, a, b, c, d, x);
+                   }
+               }
+                 JFrame frame = new JFrame();
+       frame.getContentPane().add(new JLabel(new ImageIcon(img)));
+          frame.pack();
+           frame.setVisible(true);
+             }
             }
-          
-         
+        
 
+    }
+    
+    public static int Sliceimg() {
+ 
+        System.out.println("Podzielić zdjęcie?");
+        System.out.println("1 - podziel zdjęcie");
+        System.out.println("2 - nie dziel zdjęcia");
+        Scanner scan = new Scanner(System.in);
+        int slicer = scan.nextInt();
+       
+        return slicer;
     }
     
     public static int imgSliceHorizontal() {
@@ -96,8 +129,14 @@ public class Main {
             
             Scanner scan = new Scanner(System.in);
             int choose = scan.nextInt();
-            int option;
+      
             
+        return choose;
+        
+ 
+    }
+    
+    public static int changerFunction(int choose) {
         if(choose==1){
             
         
@@ -109,8 +148,8 @@ public class Main {
             System.out.println("5 - w odcieniach zielonego");
             System.out.println("6 - w odcieniach niebieskiego");
             System.out.println("7 - zwiększenie kontrastu");
-            
-
+           
+             Scanner scan = new Scanner(System.in);
             int opti = scan.nextInt();
             return opti;
 
@@ -121,8 +160,6 @@ public class Main {
              return opti;
                 
         }
-        
- 
     }
     
     
